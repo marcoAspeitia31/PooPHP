@@ -22,12 +22,12 @@ echo '<pre>';
 var_dump($author->getPosts());
 echo '</pre>';
 
-$author->deletePost($post3);
+$author->deletePost($post2);
 
 $author->logout();
 
 $author->createPost(new Post('title4', 'content4', 'publish'));
-$author->editPost($post2, 'title-edit', 'content-edit', 'publish');
+$author->editPost($post3, 'title-edit', 'content-edit', 'publish');
 
 echo '<pre>';
 var_dump($author->getPosts());
@@ -45,7 +45,7 @@ echo '</pre>';
 $author->editPost($post1, 'title-edit', 'content-edit', 'publish');
 
 $post1->addCategories($category);
-$post2->addCategories($category2);
+$post3->addCategories($category2);
 
 echo '<pre>';
 var_dump($author->getPosts());
