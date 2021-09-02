@@ -9,27 +9,46 @@ class AuthorTest extends TestCase
 {
     public function testCreatePost()
     {
-        //
-        $post = new Post();
-        $category = new Category();
+        // Code
+        $author = new Author('Juan', 'juan@correo.com');
+        $post = new Post('titulo del articulo', 'contenido del articulo', 'draft');
 
-        $post->addCategory($category);
+        $author->login();
 
+        $this->assertTrue($author->getLogin());
+        $this->assertInstanceOf(Post::class, $post);
+        
+        $author->createPost($post);
         
     }
 
-    public function testEditPost(Post $post)
+    public function testEditPost()
     {
-        //
+        //Code
+        $author = new Author('Juan', 'juan@correo.com');
+        $post = new Post('titulo 2', 'contenido 2', 'publish');
+
+        $author->login();
+
+        $this->assertTrue($author->getLogin());
+
+        $this->assertInstanceOf(Post::class, $post);
+
+        $author->editPost($post, 'titulo editado', 'contenido editado', 'draft');
+
     }
 
-    public function testDeletePost(Post $post)
+    public function testCreateCategory()
     {
-        //
-    }
+        $author = new Author('Juan', 'juan@correo.com');
+        $category_name = 'deportes';
 
-    public function editProfileInformation()
-    {
-        //
+        $author->login();
+
+        $this->assertTrue($author->getLogin());
+
+        $this->assertIsString($category_name);
+        $author->createCategory($category_name);
+
     }
 }
